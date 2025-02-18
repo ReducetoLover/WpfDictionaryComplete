@@ -20,35 +20,33 @@ namespace WpfDictionary.ViewModel
         {
             string db = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.db");
             database = new SQLiteAsyncConnection(db);
-            database.CreateTableAsync<Employees>().Wait();
-            database.CreateTableAsync<Organization>().Wait();
+            database.CreateTableAsync<Cars>().Wait();
         }
         public SQLiteAsyncConnection database { get; set; }
         StringBuilder message = new StringBuilder();
         private string LogPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\LogCommandWPF.json";
-        public List<Employees> ListEmloyees { get; set; } = new List<Employees>();
-        public List<Organization> ListOrganization { get; set; } = new List<Organization>();
-        public async Task<List<Organization>> Working()
+        public List<Cars> ListCars { get; set; } = new List<Cars>();
+        public async Task<List<Cars>> Working()
         {
-            ListOrganization = await LoadOrg();
-            return ListOrganization;
+            ListCars = await LoadCars();
+            return ListCars;
         }
-        public async Task<List<Organization>> LoadOrg()
+        public async Task<List<Cars>> LoadCars()
         {
             
-            List<Organization> test = await database.QueryAsync<Organization>(@"SELECT Organization.id, Organization.name,  Count(B.id) as Count FROM Organization LEFT join (select * from Employees) B on B.OrgId = Organization.id GROUP by Organization.name, Organization.id ORDER BY Organization.id DESC");
+            List<Cars> test = await database.QueryAsync<Cars>(@"SELECT * FROM Cars WHERE IsAvailable != 0");
             return test;
         }
-        public async Task<List<Employees>> LoadEmployees(int value)
-        {
-            ListEmloyees = await database.Table<Employees>().Where(x => x.OrgId == value).ToListAsync();
-            return ListEmloyees;
-        }
-        public List<Employees> LoadEmployees(string value)
-        {
-            List<Employees> ListChangedEmployees = ListEmloyees.Where(p => p.Surname.ToLower().Contains(value) || p.Name.ToLower().Contains(value) || p.Middlename.ToLower().Contains(value) || p.Position.ToLower().Contains(value)).ToList();
-            return ListChangedEmployees;
-        }
+        //public async Task<List<Employees>> LoadEmployees(int value)
+        //{
+        //    ListEmloyees = await database.Table<Employees>().Where(x => x.OrgId == value).ToListAsync();
+        //    return ListEmloyees;
+        //}
+        //public List<Employees> LoadEmployees(string value)
+        //{
+        //    List<Employees> ListChangedEmployees = ListEmloyees.Where(p => p.Surname.ToLower().Contains(value) || p.Name.ToLower().Contains(value) || p.Middlename.ToLower().Contains(value) || p.Position.ToLower().Contains(value)).ToList();
+        //    return ListChangedEmployees;
+        //}
         public void SaveLogInnerData(StringBuilder Msg)
         {
             string TimeStamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -63,52 +61,52 @@ namespace WpfDictionary.ViewModel
                 MessageBox.Show(ex.Message);
             }
         }
-        public async void EditOrg(Organization row)
+        public async void EditCars(Cars row)
         {
             await database.UpdateAsync(row);
             message.Clear();
-            message.Append($"ИЗМЕНЕНА ОРГАНИЗАЦИЯ {row.Name}");
+            message.Append($"ИЗМЕНЕНА ОРГАНИЗАЦИЯ {row.Make}");
             SaveLogInnerData(message);
         }
-        public async void EditEmpl(Employees row)
-        {
-            await database.UpdateAsync(row);
-            message.Clear();
-            message.Append($"ИЗМЕНЁН СОТРУДНИК {row.Surname} {row.Name} {row.Middlename}. Должность {row.Position}");
-            SaveLogInnerData(message);
-        }
-        public async void DelOrg(Organization value)
-        {
-            await database.DeleteAsync(value);
-            message.Clear();
-            message.Append($"УДАЛЕНА ОРГАНИЗАЦИЯ {value.Name}");
-            SaveLogInnerData(message);
-        }
-        public async void DelEmpl(Employees value)
+        //public async void EditEmpl(Employees row)
+        //{
+        //    await database.UpdateAsync(row);
+        //    message.Clear();
+        //    message.Append($"ИЗМЕНЁН СОТРУДНИК {row.Surname} {row.Name} {row.Middlename}. Должность {row.Position}");
+        //    SaveLogInnerData(message);
+        //}
+        public async void DelCars(Cars value)
         {
             await database.DeleteAsync(value);
             message.Clear();
-            message.Append($"УДАЛЁН СОТРУДНИК {value.Surname} {value.Name} {value.Middlename}. Должность {value.Position}");
+            message.Append($"УДАЛЕНА ОРГАНИЗАЦИЯ {value.Make}");
             SaveLogInnerData(message);
         }
-        public async void AddEmpl(Employees employees)
+        //public async void DelEmpl(Employees value)
+        //{
+        //    await database.DeleteAsync(value);
+        //    message.Clear();
+        //    message.Append($"УДАЛЁН СОТРУДНИК {value.Surname} {value.Name} {value.Middlename}. Должность {value.Position}");
+        //    SaveLogInnerData(message);
+        //}
+        public async void AddCars(Cars employees)
         {
             await database.InsertAsync(employees);
             message.Clear();
-            message.Append($"ДОБАВЛЕН СОТРУДНИК {employees.Surname} {employees.Name} {employees.Middlename}. Должность {employees.Position}");
+            message.Append($"ДОБАВЛЕН СОТРУДНИК");
             SaveLogInnerData(message);
         }
-        public async void AddOrg()
-        {
-            if (database != null)
-            {
-                Organization organization = new Organization() { };
-                await database.InsertAsync(organization);
-                message.Clear();
-                message.Append($"ДОБАВЛЕНА ОРГАНИЗАЦИЯ {organization.Name}");
-                SaveLogInnerData(message);
+        //public async void AddOrg()
+        //{
+        //    if (database != null)
+        //    {
+        //        Organization organization = new Organization() { };
+        //        await database.InsertAsync(organization);
+        //        message.Clear();
+        //        message.Append($"ДОБАВЛЕНА ОРГАНИЗАЦИЯ {organization.Name}");
+        //        SaveLogInnerData(message);
 
-            }
-        }
+        //    }
+        //}
     }
 }

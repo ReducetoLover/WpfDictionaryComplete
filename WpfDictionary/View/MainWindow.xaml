@@ -19,11 +19,11 @@
         <Button x:Name="BtnDeleteOrg"  Content="Удалить организацию" Click="BtnDeleteOrg_Click"
                 />
       </DockPanel>
-      <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" x:Name="Org" ItemsSource="{Binding ListOrg}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="Org_SelectionChanged" RowEditEnding="Org_RowEditEnding">
+            <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" x:Name="Cars" ItemsSource="{Binding ListOrg}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="Org_SelectionChanged" RowEditEnding="Org_RowEditEnding">
         <DataGrid.Columns>
           <DataGridTextColumn Visibility="Hidden" Header="Название организации" Binding="{Binding Id}"/>
           <DataGridTextColumn Header="Название организации" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-          <DataGridTextColumn IsReadOnly="True"  Header="Количество сотрудников" Binding="{Binding Count}"/>
+          <DataGridTextColumn IsReadOnly="True"  Header="Количество сотрудников" Binding="{Binding Model}"/>
         </DataGrid.Columns>
       </DataGrid>
     </DockPanel>

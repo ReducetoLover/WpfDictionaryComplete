@@ -18,7 +18,7 @@ namespace WpfDictionary
         }
         private async void UpdateTables(object sender, RoutedEventArgs e)
         {
-            Org.ItemsSource = await work.Working();
+           // Org.ItemsSource = await work.Working();
             //BitmapImage bmp;
             //foreach (var item in test)
             //{
@@ -38,7 +38,7 @@ namespace WpfDictionary
         }
         private async void LoadTables(object sender, RoutedEventArgs e)
         {
-            Org.ItemsSource = await work.Working();
+            Cars.ItemsSource = await work.Working();
         }
         private void DeteleTables(object sender, RoutedEventArgs e)
         {
@@ -46,78 +46,78 @@ namespace WpfDictionary
             if (result == MessageBoxResult.Yes)
             {
                 Emp.ItemsSource = null;
-                Org.ItemsSource = null;
+               // Org.ItemsSource = null;
             }
         }
 
         private void TxtBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = TxtBoxSearch.Text.ToLower();
-            Emp.ItemsSource = work.LoadEmployees(searchText);
+            //Emp.ItemsSource = work.LoadEmployees(searchText);
         }
         private async void Org_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TxtBoxSearch.Text = string.Empty;
-            if (Org.SelectedIndex >= 0)
-            {
-                var selectedOrgId = ((Organization)Org.SelectedItem).Id;
-                Emp.ItemsSource = await work.LoadEmployees(selectedOrgId);
-            }
+            //if (Org.SelectedIndex >= 0)
+            //{
+            //    //var selectedOrgId = ((Organization)Org.SelectedItem).Id;
+            //    //Emp.ItemsSource = await work.LoadEmployees(selectedOrgId);
+            //}
         }
 
 
 
         private void Org_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            Organization row = (Organization)e.Row.Item;
-            work.EditOrg(row);
+            //Organization row = (Organization)e.Row.Item;
+            //work.EditCars(row);
         }
 
         private async void BtnDeleteOrg_Click(object sender, RoutedEventArgs e)
         {
-            if (Org.SelectedIndex >= 0)
-            {
-                var selectedOrg = (Organization)Org.SelectedItem;
-                work.DelOrg(selectedOrg);
-                Org.ItemsSource = await work.Working();
-            }
+            //if (Org.SelectedIndex >= 0)
+            //{
+            //    //var selectedOrg = (Organization)Org.SelectedItem;
+            //    //work.DelCars(selectedOrg);
+            //    //Org.ItemsSource = await work.Working();
+            //}
 
         }
 
         private async void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
         {
-            if (Org.SelectedIndex >= 0)
-            {
-                var selectedOrgId = ((Organization)Org.SelectedItem).Id;
-                Employees employees = new Employees() { OrgId = selectedOrgId };
-                work.AddEmpl(employees);
-                Emp.ItemsSource = await work.LoadEmployees(selectedOrgId);
-                Org.ItemsSource = await work.Working();
-            }
+            //if (Org.SelectedIndex >= 0)
+            //{
+            //    //var selectedOrgId = ((Organization)Org.SelectedItem).Id;
+            //    //Employees employees = new Employees() { OrgId = selectedOrgId };
+            //    //work.AddEmpl(employees);
+            //    //Emp.ItemsSource = await work.LoadEmployees(selectedOrgId);
+            //    //Org.ItemsSource = await work.Working();
+            //}
         }
         private async void BtnAddOrg_Click(object sender, RoutedEventArgs e)
         {
-            work.AddOrg();
-            Org.ItemsSource = await work.Working();
+            //work.AddOrg();
+            //Org.ItemsSource = await work.Working();
         }
 
 
         private async void BtnDeleteEmpl_Click(object sender, RoutedEventArgs e)
         {
-            if (Emp.SelectedIndex >= 0 && Org.SelectedIndex >=0)
-            {
-                var selectedEmpl = ((Employees)Emp.SelectedItem);
-                var selectedOrg = ((Organization)Org.SelectedItem);
-                work.DelEmpl(selectedEmpl);
-                Org.ItemsSource = await work.Working();
-                Emp.ItemsSource = await work.LoadEmployees(selectedOrg.Id);
-            }
+            //if (Emp.SelectedIndex >= 0 && Org.SelectedIndex >=0)
+            //{
+            //    //var selectedEmpl = ((Employees)Emp.SelectedItem);
+            //    //var selectedOrg = ((Organization)Org.SelectedItem);
+            //    //work.DelEmpl(selectedEmpl);
+            //    //Org.ItemsSource = await work.Working();
+            //    //Emp.ItemsSource = await work.LoadEmployees(selectedOrg.Id);
+            //}
         }
         private void Emp_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            var value = (Employees)Emp.SelectedItem;
-            Employees row = (Employees)e.Row.Item;
-            work.EditEmpl(row);
+            //var value = (Employees)Emp.SelectedItem;
+            //Employees row = (Employees)e.Row.Item;
+            //work.EditEmpl(row);
         }
     }
 }

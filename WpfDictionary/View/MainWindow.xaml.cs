@@ -45,7 +45,7 @@ namespace WpfDictionary
             MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить все данные?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Emp.ItemsSource = null;
+                Cars.ItemsSource = null;
                // Org.ItemsSource = null;
             }
         }

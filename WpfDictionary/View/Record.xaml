@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfDictionary.View.Record"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDictionary.View"
+        mc:Ignorable="d"
+        Title="Record" Height="317" Width="486">
+    <Grid>
+        <Button x:Name="SaveDb" Content="Сохранить" HorizontalAlignment="Center" Margin="0,232,0,0" VerticalAlignment="Top" Height="46" Width="136" Click="SaveDb_Click"/>
+        <Label Content="Производитель" HorizontalAlignment="Left" Margin="24,46,0,0" VerticalAlignment="Top"/>
+        <Label Content="Модель" HorizontalAlignment="Left" Margin="24,77,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пробег" HorizontalAlignment="Left" Margin="24,108,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дата производства" HorizontalAlignment="Left" Margin="24,139,0,0" VerticalAlignment="Top"/>
+        <Label Content="В наличии?" HorizontalAlignment="Left" Margin="24,170,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using WpfDictionary.Model;
+using WpfDictionary.View;
 using WpfDictionary.ViewModel;
 
 namespace WpfDictionary
@@ -47,7 +48,7 @@ namespace WpfDictionary
             if (result == MessageBoxResult.Yes)
             {
                 //Cars.ItemsSource = null;
-                //await work.DelTable("Cars");
+                await work.DelCars("Cars");
                // var selectedEmpl = ((Cars)Cars.SelectedItem);
                // await work.DelCars(selectedEmpl);
             }
@@ -89,6 +90,8 @@ namespace WpfDictionary
 
         private async void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
         {
+            Record recordWindow = new Record();
+            recordWindow.Show();
             //if (Org.SelectedIndex >= 0)
             //{
             //    //var selectedOrgId = ((Organization)Org.SelectedItem).Id;

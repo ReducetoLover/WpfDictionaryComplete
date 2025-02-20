@@ -23,18 +23,11 @@
       </DockPanel>
       <DataGrid CanUserDeleteRows="False" CanUserAddRows="False" AutoGenerateColumns="False" x:Name="Cars" ItemsSource="{Binding ListCars}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Bottom" RowEditEnding="Emp_RowEditEnding">
         <DataGrid.Columns>
-          <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname,UpdateSourceTrigger=PropertyChanged}"/>
-          <DataGridTextColumn Header="Имя" Binding="{Binding Model}"/>
-          <DataGridTextColumn Header="Отчество" Binding="{Binding Middlename,UpdateSourceTrigger=PropertyChanged}"/>
-          <DataGridTextColumn Header="Должность" Binding="{Binding Position,UpdateSourceTrigger=PropertyChanged}"/>
-          <DataGridTemplateColumn Header="Фото" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-              <DataTemplate>
-                <Image Height="80" Width="80" Source="{Binding Image,UpdateSourceTrigger=PropertyChanged}"/>
-              </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-          </DataGridTemplateColumn>
-
+          <DataGridTextColumn Header="Марка" Binding="{Binding Make}"/>
+          <DataGridTextColumn Header="Модель" Binding="{Binding Model}"/>
+          <DataGridTextColumn Header="Пробег" Binding="{Binding Mileage}"/>
+          <DataGridTextColumn Header="Дата производства" Binding="{Binding DateOfPurchase}"/>
+          <DataGridTextColumn Header="В наличии?" Binding ="{Binding IsAvailable}"/>
         </DataGrid.Columns>
       </DataGrid>
 

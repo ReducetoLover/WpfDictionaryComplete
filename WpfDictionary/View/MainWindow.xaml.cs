@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using WpfDictionary.Model;
@@ -40,13 +41,15 @@ namespace WpfDictionary
         {
             Cars.ItemsSource = await work.Working();
         }
-        private void DeteleTables(object sender, RoutedEventArgs e)
+        private async void DeteleTables(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить все данные?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Cars.ItemsSource = null;
-               // Org.ItemsSource = null;
+                //Cars.ItemsSource = null;
+                //await work.DelTable("Cars");
+               // var selectedEmpl = ((Cars)Cars.SelectedItem);
+               // await work.DelCars(selectedEmpl);
             }
         }
 
@@ -75,12 +78,12 @@ namespace WpfDictionary
 
         private async void BtnDeleteOrg_Click(object sender, RoutedEventArgs e)
         {
-            //if (Org.SelectedIndex >= 0)
-            //{
-            //    //var selectedOrg = (Organization)Org.SelectedItem;
-            //    //work.DelCars(selectedOrg);
-            //    //Org.ItemsSource = await work.Working();
-            //}
+            if (Cars.SelectedIndex >= 0)
+            {
+                //var selectedOrg = (Organization)Org.SelectedItem;
+                //work.DelCars(selectedOrg);
+                //Org.ItemsSource = await work.Working();
+            }
 
         }
 

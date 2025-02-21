@@ -88,18 +88,11 @@ namespace WpfDictionary
 
         }
 
-        private async void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
+        private void BtnAddEmpl_Click(object sender, RoutedEventArgs e)
         {
-            Record recordWindow = new Record();
+            Record recordWindow = new Record("Добавление автомобиля");
+            recordWindow.Name = "добавление";
             recordWindow.Show();
-            //if (Org.SelectedIndex >= 0)
-            //{
-            //    //var selectedOrgId = ((Organization)Org.SelectedItem).Id;
-            //    //Employees employees = new Employees() { OrgId = selectedOrgId };
-            //    //work.AddEmpl(employees);
-            //    //Emp.ItemsSource = await work.LoadEmployees(selectedOrgId);
-            //    //Org.ItemsSource = await work.Working();
-            //}
         }
         private async void BtnAddOrg_Click(object sender, RoutedEventArgs e)
         {
@@ -124,6 +117,27 @@ namespace WpfDictionary
             //var value = (Employees)Emp.SelectedItem;
             //Employees row = (Employees)e.Row.Item;
             //work.EditEmpl(row);
+        }
+
+        private void BtnAddCar_Click(object sender, RoutedEventArgs e)
+        {
+            Record recordWindow = new Record("Добавление автомобиля");
+            recordWindow.Show();
+        }
+
+        private void BtnDeleteCar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditCar_Click(object sender, RoutedEventArgs e)
+        {
+            if (Cars.SelectedIndex >= 0)
+            {
+                //    var selectedOrgId = ((Cars)Cars.SelectedItem).Id;
+                //    Record recordWindow = new Record("Редактирование автомобиля", selectedOrgId);
+                //recordWindow.Show();
+            }
         }
     }
 }

@@ -21,6 +21,6 @@ namespace WpfDictionary.Model
         [Column("DateOfPurchase")]
         public string? DateOfPurchase { get; set; }
         [Column("IsAvailable")]
-        public int IsAvailable { get; set; }
+        public int? IsAvailable { get; set; }
     }
 }

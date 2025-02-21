@@ -19,7 +19,6 @@ namespace WpfDictionary.ViewModel
         string db = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DB.db");
         public Work()
         {
-            
             database = new SQLiteAsyncConnection(db);
             database.CreateTableAsync<Cars>().Wait();
         }
@@ -34,8 +33,7 @@ namespace WpfDictionary.ViewModel
         }
         public async Task<List<Cars>> LoadCars()
         {
-
-                List<Cars> test = await database.QueryAsync<Cars>(@"SELECT * FROM Cars WHERE IsAvailable != 0");
+           List<Cars> test = await database.QueryAsync<Cars>(@"SELECT * FROM Cars WHERE IsAvailable != 0");
            // await database.ExecuteAsync();
             return test;
         }
@@ -90,12 +88,13 @@ namespace WpfDictionary.ViewModel
         //    message.Append($"УДАЛЁН СОТРУДНИК {value.Surname} {value.Name} {value.Middlename}. Должность {value.Position}");
         //    SaveLogInnerData(message);
         //}
-        public async void AddCars(Cars employees)
+        public async Task<bool> AddCar(Cars employees)
         {
             await database.InsertAsync(employees);
             message.Clear();
             message.Append($"ДОБАВЛЕН СОТРУДНИК");
             SaveLogInnerData(message);
+            return true;
         }
         //public async void AddOrg()
         //{

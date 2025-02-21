@@ -7,12 +7,18 @@
         mc:Ignorable="d"
         Title="Record" Height="317" Width="486">
     <Grid>
-        <Button x:Name="SaveDb" Content="Сохранить" HorizontalAlignment="Center" Margin="0,232,0,0" VerticalAlignment="Top" Height="46" Width="136" Click="SaveDb_Click"/>
-        <Label Content="Производитель" HorizontalAlignment="Left" Margin="24,46,0,0" VerticalAlignment="Top"/>
-        <Label Content="Модель" HorizontalAlignment="Left" Margin="24,77,0,0" VerticalAlignment="Top"/>
-        <Label Content="Пробег" HorizontalAlignment="Left" Margin="24,108,0,0" VerticalAlignment="Top"/>
-        <Label Content="Дата производства" HorizontalAlignment="Left" Margin="24,139,0,0" VerticalAlignment="Top"/>
-        <Label Content="В наличии?" HorizontalAlignment="Left" Margin="24,170,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SaveDb" Content="Сохранить" HorizontalAlignment="Center" Margin="0,208,0,0" VerticalAlignment="Top" Height="46" Width="136" Click="SaveDb_Click"/>
+        <Label Content="Производитель" HorizontalAlignment="Left" Margin="24,28,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="26" Width="95"/>
+        <Label Content="Модель" HorizontalAlignment="Left" Margin="24,59,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="26" Width="53"/>
+        <Label Content="Пробег" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="26" Width="50"/>
+        <Label Content="Дата производства" HorizontalAlignment="Left" Margin="24,121,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="26" Width="115"/>
+        <Label Content="В наличии?" HorizontalAlignment="Left" Margin="24,152,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="26" Width="73"/>
+        <TextBox x:Name="Txt_Make" HorizontalAlignment="Left" Margin="156,29,0,0" VerticalAlignment="Top" Width="208" FontSize="16" Height="23"/>
+        <TextBox x:Name="Txt_Model" HorizontalAlignment="Left" Margin="156,60,0,0" VerticalAlignment="Top" Width="208" FontSize="16" Height="23" PreviewTextInput="Model_PreviewTextInput" PreviewKeyDown="Model_PreviewKeyDown"/>
+        <TextBox x:Name="Txt_Mileage" HorizontalAlignment="Left" Margin="156,91,0,0" VerticalAlignment="Top" Width="208" FontSize="16" Height="23"/>
+        <DatePicker x:Name="DPick_DateOfPurchase" HorizontalAlignment="Left" Margin="156,122,0,0" VerticalAlignment="Top" Width="208" Focusable="False" Cursor="Hand" Height="24"/>
+        <CheckBox x:Name="ChBox_IsAvailable" Content="" HorizontalAlignment="Left" Margin="156,158,0,0" VerticalAlignment="Top" Height="14" Width="20"/>
+
 
     </Grid>
 </Window>

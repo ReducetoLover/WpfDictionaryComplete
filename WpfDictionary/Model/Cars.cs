@@ -13,7 +13,7 @@ namespace WpfDictionary.Model
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
         [Column("Make")]
-        public string? Make { get; set; }
+        public string Make { get; set; }
         [Column("Model")]
         public string? Model { get; set; }
         [Column("Mileage")]

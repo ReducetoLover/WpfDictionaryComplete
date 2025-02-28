@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace WpfDictionary.Model
         [PrimaryKey, AutoIncrement, Column("id")]
         public int Id { get; set; }
         [Column("Make")]
-        public string Make { get; set; }
+        [AllowNull]
+        public  string Make { get; set; }
         [Column("Model")]
         public string? Model { get; set; }
         [Column("Mileage")]

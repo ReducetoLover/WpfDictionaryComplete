@@ -20,6 +20,7 @@ namespace WpfDictionary.ViewModel
         public Work()
         {
             database = new SQLiteAsyncConnection(db);
+            database.CreateTableAsync<Cars>().Wait();
         }
         public SQLiteAsyncConnection database { get; set; }
         public List<Cars> ListCars { get; set; } = new List<Cars>();
